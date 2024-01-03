@@ -1,0 +1,33 @@
+{
+  "name": "google-slides-generator",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "tsc -p ./util && node ./util/build/setup.js",
+    "build": "npm run lint && npm run setup && npm run build-no-lint",
+    "build-no-lint": "rollup -c",
+    "push-no-build": "clasp push",
+    "push": "npm run build && npm run push-no-build",
+    "lint": "eslint . --fix",
+    "link": "npm link ../ESLint-Comment-Header"
+  },
+  "author": "Min-Kyu Lee",
+  "dependencies": {
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^1.0.68"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "@typescript-eslint/type-utils": "^6.17.0",
+    "@typescript-eslint/types": "^6.17.0",
+    "eslint": "^8.56.0",
+    "rollup": "^4.9.2",
+    "typescript": "^5.3.3",
+    "eslint-plugin-comment-header": "../Eslint-Plugin-Comment-Header"
+  },
+  "type": "module"
+}
