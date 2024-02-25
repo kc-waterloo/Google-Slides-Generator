@@ -23,6 +23,9 @@ import { SlideId } from "../../shared/slide-id/slide-id";
  * @param {Nullable<SlideNumber>} parameters.templateTitleSlideNumber
  * @param {Nullable<SlideNumber>} parameters.templateContentSlideNumber
  * @param {SlideNumber} parameters.insertionSlideNumber
+ * @param {string} parameters.longQuoteItems[].title
+ * @param {string} parameters.longQuoteItems[].subtitle
+ * @param {string} parameters.longQuoteItems[].quote
  */
 export const createLongQuotesSlides = ({
 	longQuoteItems = longQuoteSlideItemsDefault_,

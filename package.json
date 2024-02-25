@@ -11,7 +11,7 @@
     "push-no-build": "clasp push",
     "push": "npm run build && npm run push-no-build",
     "lint": "eslint . --fix",
-    "link": "npm link ../ESLint-Comment-Header"
+    "link": "npm link ../ESLint-Plugin-Comment-Header"
   },
   "author": "Min-Kyu Lee",
   "dependencies": {
