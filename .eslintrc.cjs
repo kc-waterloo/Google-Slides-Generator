@@ -47,7 +47,7 @@ module.exports = {
 				authorName: "Min-Kyu Lee",
 				regexFileNamesToShowParentDirectory: [
 					"index\\..*",
-					"default\\..*",
+					"defaults\\..*",
 				],
 			},
 		],

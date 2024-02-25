@@ -5,24 +5,42 @@
  * Copyright © 2023 Min-Kyu Lee. All rights reserved. 
  */
 
-import { Nullable } from "../../shared/functions/nullable/Nullable";
-import { slideNumberToIndex_ } from "../../shared/functions/slide-number/slide-number-to-index";
+import { SlideIndex } from "../../shared/slide-index/slide-index";
+import { SlideNumber } from "../../shared/slide-number/slide-number";
+import { slideNumberToIndex_ } from "../../shared/slide-number/slide-number-to-index";
 import { lowerBoundSlideNumberDefault_, matchCaseDefault_, newTextDefault_, oldTextDefault_, upperBoundSlideNumberDefault_ } from "./defaults";
 
-export const replaceAll = (
-	oldText: string = oldTextDefault_,
-	newText: string = newTextDefault_,
-	matchCase: boolean = matchCaseDefault_,
-	lowerBoundSlideNumber: number = lowerBoundSlideNumberDefault_,
-	upperBoundSlideNumber: number = upperBoundSlideNumberDefault_,
-): void => {
-	const lowerBoundSlideIndex: Nullable<number> = slideNumberToIndex_(lowerBoundSlideNumber);
-	const upperBoundSlideIndex: Nullable<number> = slideNumberToIndex_(upperBoundSlideNumber);
 
-	if (lowerBoundSlideIndex === null || upperBoundSlideIndex === null) {
-		console.error("Lower or upper bound not defined");
-		return;
-	}
+/**
+ * 
+ * @param {Object} parameters - parameters for the function
+ * @param {string} parameters.oldText
+ * @param {string} parameters.newText
+ * @param {boolean} parameters.matchCase
+ * @param {SlideNumber} parameters.lowerBoundSlideNumber
+ * @param {SlideNumber} parameters.upperBoundSlideNumber
+ */
+export const replaceAll = ({
+	oldText = oldTextDefault_,
+	newText = newTextDefault_,
+	matchCase = matchCaseDefault_,
+	lowerBoundSlideNumber = lowerBoundSlideNumberDefault_,
+	upperBoundSlideNumber = upperBoundSlideNumberDefault_,
+}: {
+	oldText: string
+	newText: string
+	matchCase: boolean
+	lowerBoundSlideNumber: SlideNumber
+	upperBoundSlideNumber: SlideNumber
+} = {
+	oldText: oldTextDefault_,
+	newText: newTextDefault_,
+	matchCase: matchCaseDefault_,
+	lowerBoundSlideNumber: lowerBoundSlideNumberDefault_,
+	upperBoundSlideNumber: upperBoundSlideNumberDefault_,	
+}): void => {
+	const lowerBoundSlideIndex: SlideIndex = slideNumberToIndex_(lowerBoundSlideNumber);
+	const upperBoundSlideIndex: SlideIndex = slideNumberToIndex_(upperBoundSlideNumber);
 
 	const presentation = SlidesApp.getActivePresentation();
 

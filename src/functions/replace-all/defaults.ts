@@ -5,7 +5,7 @@
  * Copyright © 2023 Min-Kyu Lee. All rights reserved. 
  */
 
-import { SlideNumber } from "../../shared/functions/slide-number/SlideNumber";
+import { SlideNumber } from "../../shared/slide-number/slide-number";
 
 export const oldTextDefault_: string = "";
 export const newTextDefault_: string = "";

@@ -1,4 +1,4 @@
-import { Nullable } from "../../shared/functions/nullable/Nullable";
+import { Nullable } from "../../shared/nullable/nullable";
 /**
  * set-headers/defaults.ts
  * 
@@ -6,7 +6,7 @@ import { Nullable } from "../../shared/functions/nullable/Nullable";
  * Copyright © 2023 Min-Kyu Lee. All rights reserved. 
  */
 
-import { SlideNumber } from "../../shared/functions/slide-number/SlideNumber";
+import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { SetHeaderItem } from "./set-header-item";
 
 export const templateSlideNumberDefault_: Nullable<SlideNumber> = null;
@@ -17,29 +17,44 @@ export const setHeaderItemsDefault_: SetHeaderItem[] = [
 		sectionEndSlideNumber: 2,
 	},
 	{
-		sectionName: "Section 1",
+		sectionName: "Topic A",
 		sectionStartSlideNumber: 3,
 		sectionEndSlideNumber: 4,
 	},
 	{
-		sectionName: "Section 2",
+		sectionName: "Topic B",
 		sectionStartSlideNumber: 5,
 		sectionEndSlideNumber: 5,
 	},
 	{
-		sectionName: "Section 3",
+		sectionName: "Topic C",
 		sectionStartSlideNumber: 6,
 		sectionEndSlideNumber: 7,
 	},
 	{
-		sectionName: "Section 4",
+		sectionName: "Topic D",
 		sectionStartSlideNumber: 8,
 		sectionEndSlideNumber: 12,
 	},
 	{
-		sectionName: "Section 5",
+		sectionName: "Topic E",
 		sectionStartSlideNumber: 13,
 		sectionEndSlideNumber: 15,
+	},
+	{
+		sectionName: "Topic F",
+		sectionStartSlideNumber: 16,
+		sectionEndSlideNumber: 19,
+	},
+	{
+		sectionName: "Topic G",
+		sectionStartSlideNumber: 20,
+		sectionEndSlideNumber: 20,
+	},
+	{
+		sectionName: "Topic H",
+		sectionStartSlideNumber: 21,
+		sectionEndSlideNumber: 27,
 	},
 	{
 		sectionName: undefined,
@@ -47,3 +62,4 @@ export const setHeaderItemsDefault_: SetHeaderItem[] = [
 		sectionEndSlideNumber: 31,
 	},
 ];
+export const headerLengthDefault_ = 3;

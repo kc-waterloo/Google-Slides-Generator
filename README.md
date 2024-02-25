@@ -12,13 +12,6 @@
 <h2> Table of Contents </h2>
 
 - [Technologies Used](#technologies-used)
-- [Functions](#functions)
-	- [Create Lyric Slides](#create-lyric-slides)
-		- [Inputs](#inputs)
-	- [Replace All](#replace-all)
-		- [Inputs for Replace All](#inputs-for-replace-all)
-	- [Set Headers](#set-headers)
-		- [Inputs for Set Headers](#inputs-for-set-headers)
 
 ## Technologies Used
 
@@ -110,41 +103,3 @@
 	</tr>
 </tbody>
 </table>
-
-## Functions
-
-### Create Lyric Slides
-
-#### Inputs
-
-- `templateTitleSlideNumber: number`
-  - Indicates the slide number for the title slide that is to be used
-- `templateLyricSlideNumber: number`
-  - Indicates the slide number for the lyric slide that is to be used
-- `insertionSlideNumber: number`
-  - Indicates the slide number after which the new lyrics slides will be inserted.
-- `lyricSlideItems: LyricSlideItem[]`
-  - `songTitle` indidates the song title for the given song
-  - `artist` indidates the artist(s) that is(are) associated with the given song
-  - `lyrics` is a string with the lyrics to the given song. Each new line is a new line on the slide. Empty new lines are used to indicate new slides (`\n\n`).
-
-### Replace All
-
-#### Inputs for Replace All
-
-- `oldText`
-- `newText`
-- `matchCase`
-- `lowerBoundSlideNumber`
-- `upperBoundSlideNumber`
-
-### Set Headers
-
-#### Inputs for Set Headers
-
-- `templateSlideNumber: number`
-- `setHeaderItems: SetHeaderItem[]`
-  - `SetHeaderItem`s are composed of
-    - `sectionName?: string`
-    - `sectionStartNumber: number`
-    - `sectionEndNumber: number`
