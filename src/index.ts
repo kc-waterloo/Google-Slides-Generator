@@ -8,6 +8,7 @@
 import { createHighlightVariationSlides } from "./functions/create-highlight-variation-slides";
 import { createLongQuotesSlides } from "./functions/create-long-quotes-slides";
 import { createShortQuotesSlides } from "./functions/create-short-quotes-slides";
+import { createVerseSlides } from "./functions/create-verse-slides";
 import { replaceAll } from "./functions/replace-all";
 import { setHeaders } from "./functions/set-headers";
 
@@ -18,4 +19,5 @@ const main_ = (a: string): void => {
 	console.log(setHeaders);
 	console.log(replaceAll);
 	console.log(createHighlightVariationSlides);
+	console.log(createVerseSlides);
 };
