@@ -21,6 +21,8 @@ import { processShortQuoteItem_ } from "./process-short-quote-item";
  * @param {ShortQuoteItem[]} parameters.shortQuoteItems
  * @param {Nullable<SlideNumber>} parameters.templateSlideNumber
  * @param {SlideNumber} parameters.insertionSlideNumber
+ * @param {string} parameters.shortQuoteItems.quote
+ * @param {string} parameters.shortQuoteItems.addendum
  */
 export const createShortQuotesSlides = ({
 	shortQuoteItems = createShortQuotesSlidesDefaultShortQuoteItems_,
