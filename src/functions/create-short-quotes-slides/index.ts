@@ -8,7 +8,7 @@
 import { Nullable} from "./../../shared/nullable/nullable.d";
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { ShortQuoteItem } from "./short-quote-item";
-import { insertionSlideNumberDefault_, shortQuoteItemsDefault_, templateSlideNumberDefault_ } from "./defaults";
+import { createShortQuotesSlidesDefaultInsertionSlideNumber_, createShortQuotesSlidesDefaultShortQuoteItems_, createShortQuotesSlidesDefaultTemplateSlideNumber_ } from "./defaults";
 import { slideNumberToId_ } from "../../shared/slide-number/slide-number-to-id";
 import { SlideId } from "../../shared/slide-id/slide-id";
 import { slideNumberToIndex_ } from "../../shared/slide-number/slide-number-to-index";
@@ -23,17 +23,17 @@ import { processShortQuoteItem_ } from "./process-short-quote-item";
  * @param {SlideNumber} parameters.insertionSlideNumber
  */
 export const createShortQuotesSlides = ({
-	shortQuoteItems = shortQuoteItemsDefault_,
-	templateSlideNumber: templateSlideNumber = templateSlideNumberDefault_,
-	insertionSlideNumber = insertionSlideNumberDefault_,
+	shortQuoteItems = createShortQuotesSlidesDefaultShortQuoteItems_,
+	templateSlideNumber: templateSlideNumber = createShortQuotesSlidesDefaultTemplateSlideNumber_,
+	insertionSlideNumber = createShortQuotesSlidesDefaultInsertionSlideNumber_,
 }: {
     shortQuoteItems: ShortQuoteItem[],
     templateSlideNumber: Nullable<SlideNumber>,
     insertionSlideNumber: SlideNumber,
 } = {
-	shortQuoteItems: shortQuoteItemsDefault_,
-	templateSlideNumber: templateSlideNumberDefault_,
-	insertionSlideNumber: insertionSlideNumberDefault_,
+	shortQuoteItems: createShortQuotesSlidesDefaultShortQuoteItems_,
+	templateSlideNumber: createShortQuotesSlidesDefaultTemplateSlideNumber_,
+	insertionSlideNumber: createShortQuotesSlidesDefaultInsertionSlideNumber_,
 }) => {
 	const presentation: GoogleAppsScript.Slides.Presentation = SlidesApp.getActivePresentation();
 

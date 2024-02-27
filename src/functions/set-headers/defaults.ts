@@ -9,8 +9,8 @@ import { Nullable } from "../../shared/nullable/nullable";
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { SetHeaderItem } from "./set-header-item";
 
-export const templateSlideNumberDefault_: Nullable<SlideNumber> = null;
-export const setHeaderItemsDefault_: SetHeaderItem[] = [
+export const setHeadersDefaultTemplateSlideNumber_: Nullable<SlideNumber> = null;
+export const setHeadersDefaultSetHeaderItems_: SetHeaderItem[] = [
 	{
 		sectionName: undefined,
 		sectionStartSlideNumber: 1,

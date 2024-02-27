@@ -9,10 +9,10 @@ import { Nullable } from "../../shared/nullable/nullable";
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { LongQuoteItem } from "./long-quote-item";
 
-export const templateTitleSlideNumberDefault_: Nullable<number> = null;
-export const templateLongQuoteSlideNumberDefault_: Nullable<number> = null;
-export const insertionSlideNumberDefault_: SlideNumber = 9;
-export const longQuoteSlideItemsDefault_: LongQuoteItem[] = [
+export const createLyricsSlidesDefaultTemplateTitleSlideNumber_: Nullable<number> = null;
+export const createLyricsSlidesDefaultTemplateLongQuoteSlideNumber_: Nullable<number> = null;
+export const createLyricsSlidesDefaultInsertionSlideNumber_: SlideNumber = 9;
+export const createLyricsSlidesDefaultLongQuoteSlideItems_: LongQuoteItem[] = [
 	{
 		title: "Lorem Ipsum 1",
 		subtitle: "Test Author 1",

@@ -10,7 +10,7 @@ import { slideNumberToIndex_ } from "../../shared/slide-number/slide-number-to-i
 import { processCopyItems_ } from "../../shared/copy-item/process-copy-items";
 import { CopyItem } from "../../shared/copy-item/copy-item";
 import { SetHeaderItem } from "./set-header-item";
-import { headerLengthDefault_, setHeaderItemsDefault_, templateSlideNumberDefault_ } from "./defaults";
+import { headerLengthDefault_, setHeadersDefaultSetHeaderItems_, setHeadersDefaultTemplateSlideNumber_ } from "./defaults";
 import { slideNumberToId_ } from "../../shared/slide-number/slide-number-to-id";
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { SlideIndex } from "../../shared/slide-index/slide-index";
@@ -24,16 +24,16 @@ import { SlideIndex } from "../../shared/slide-index/slide-index";
  * @param {number} parameters.headerLength
  */
 export const setHeaders = ({
-	templateSlideNumber = templateSlideNumberDefault_,
-	setHeaderItems = setHeaderItemsDefault_,
+	templateSlideNumber = setHeadersDefaultTemplateSlideNumber_,
+	setHeaderItems = setHeadersDefaultSetHeaderItems_,
 	headerLength = headerLengthDefault_,
 }: {
 	templateSlideNumber: Nullable<SlideNumber>,
 	setHeaderItems: SetHeaderItem[],
 	headerLength: number,
 } = {
-	templateSlideNumber: templateSlideNumberDefault_,
-	setHeaderItems: setHeaderItemsDefault_,	
+	templateSlideNumber: setHeadersDefaultTemplateSlideNumber_,
+	setHeaderItems: setHeadersDefaultSetHeaderItems_,	
 	headerLength: headerLengthDefault_,
 }): void => {
 	const presentation: GoogleAppsScript.Slides.Presentation = SlidesApp.getActivePresentation();

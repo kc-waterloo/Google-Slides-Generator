@@ -7,8 +7,8 @@
 
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 
-export const oldTextDefault_: string = "";
-export const newTextDefault_: string = "";
-export const matchCaseDefault_: boolean = false;
-export const lowerBoundSlideNumberDefault_: SlideNumber = 0;
-export const upperBoundSlideNumberDefault_: SlideNumber = Infinity;
+export const replaceAllDefaultOldText_: string = "";
+export const replaceAllDefaultNewText_: string = "";
+export const replaceAllDefaultMatchCase_: boolean = false;
+export const replaceAllDefaultLowerBoundSlideNumber_: SlideNumber = 0;
+export const replaceAllDefaultUpperBoundSlideNumber_: SlideNumber = Infinity;

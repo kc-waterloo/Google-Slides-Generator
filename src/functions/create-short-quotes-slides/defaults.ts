@@ -9,9 +9,9 @@ import { Nullable } from "../../shared/nullable/nullable";
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { ShortQuoteItem } from "./short-quote-item";
 
-export const templateSlideNumberDefault_: Nullable<number> = null;
-export const insertionSlideNumberDefault_: SlideNumber = 9;
-export const shortQuoteItemsDefault_: ShortQuoteItem[] = [
+export const createShortQuotesSlidesDefaultTemplateSlideNumber_: Nullable<number> = null;
+export const createShortQuotesSlidesDefaultInsertionSlideNumber_: SlideNumber = 9;
+export const createShortQuotesSlidesDefaultShortQuoteItems_: ShortQuoteItem[] = [
 	{
 		quote: `
             Memes are good

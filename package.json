@@ -10,8 +10,7 @@
     "build-no-lint": "rollup -c",
     "push-no-build": "clasp push",
     "push": "npm run build && npm run push-no-build",
-    "lint": "eslint . --fix",
-    "link": "npm link ../ESLint-Comment-Header"
+    "lint": "eslint . --fix"
   },
   "author": "Min-Kyu Lee",
   "dependencies": {
@@ -25,9 +24,9 @@
     "@typescript-eslint/type-utils": "^6.17.0",
     "@typescript-eslint/types": "^6.17.0",
     "eslint": "^8.56.0",
+    "eslint-plugin-comment-header": "https://github.com/leeminkyu16/ESLint-Plugin-Comment-Header/releases/download/v0.0.1/eslint-plugin-comment-header-0.0.1.tgz",
     "rollup": "^4.9.2",
-    "typescript": "^5.3.3",
-    "eslint-plugin-comment-header": "../Eslint-Plugin-Comment-Header"
+    "typescript": "^5.3.3"
   },
   "type": "module"
 }

@@ -7,4 +7,4 @@
 
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 
-export const defaultSlideNumber_: SlideNumber = -1;
+export const createHighlightVariationSlidesDefaultSlideNumber_: SlideNumber = -1;

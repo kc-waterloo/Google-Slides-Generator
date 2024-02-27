@@ -8,7 +8,7 @@
 import { SlideIndex } from "../../shared/slide-index/slide-index";
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { slideNumberToIndex_ } from "../../shared/slide-number/slide-number-to-index";
-import { lowerBoundSlideNumberDefault_, matchCaseDefault_, newTextDefault_, oldTextDefault_, upperBoundSlideNumberDefault_ } from "./defaults";
+import { replaceAllDefaultLowerBoundSlideNumber_, replaceAllDefaultMatchCase_, replaceAllDefaultNewText_, replaceAllDefaultOldText_, replaceAllDefaultUpperBoundSlideNumber_ } from "./defaults";
 
 
 /**
@@ -21,11 +21,11 @@ import { lowerBoundSlideNumberDefault_, matchCaseDefault_, newTextDefault_, oldT
  * @param {SlideNumber} parameters.upperBoundSlideNumber
  */
 export const replaceAll = ({
-	oldText = oldTextDefault_,
-	newText = newTextDefault_,
-	matchCase = matchCaseDefault_,
-	lowerBoundSlideNumber = lowerBoundSlideNumberDefault_,
-	upperBoundSlideNumber = upperBoundSlideNumberDefault_,
+	oldText = replaceAllDefaultOldText_,
+	newText = replaceAllDefaultNewText_,
+	matchCase = replaceAllDefaultMatchCase_,
+	lowerBoundSlideNumber = replaceAllDefaultLowerBoundSlideNumber_,
+	upperBoundSlideNumber = replaceAllDefaultUpperBoundSlideNumber_,
 }: {
 	oldText: string
 	newText: string
@@ -33,11 +33,11 @@ export const replaceAll = ({
 	lowerBoundSlideNumber: SlideNumber
 	upperBoundSlideNumber: SlideNumber
 } = {
-	oldText: oldTextDefault_,
-	newText: newTextDefault_,
-	matchCase: matchCaseDefault_,
-	lowerBoundSlideNumber: lowerBoundSlideNumberDefault_,
-	upperBoundSlideNumber: upperBoundSlideNumberDefault_,	
+	oldText: replaceAllDefaultOldText_,
+	newText: replaceAllDefaultNewText_,
+	matchCase: replaceAllDefaultMatchCase_,
+	lowerBoundSlideNumber: replaceAllDefaultLowerBoundSlideNumber_,
+	upperBoundSlideNumber: replaceAllDefaultUpperBoundSlideNumber_,	
 }): void => {
 	const lowerBoundSlideIndex: SlideIndex = slideNumberToIndex_(lowerBoundSlideNumber);
 	const upperBoundSlideIndex: SlideIndex = slideNumberToIndex_(upperBoundSlideNumber);

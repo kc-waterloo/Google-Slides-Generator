@@ -10,7 +10,7 @@ import { generateDiscordPost_ } from "./generate-discord-post";
 import { slideNumberToIndex_ } from "../../shared/slide-number/slide-number-to-index";
 import { processLongQuoteSlideItem_ } from "./process-long-quote-slide-item";
 import { LongQuoteItem } from "./long-quote-item";
-import { insertionSlideNumberDefault_, longQuoteSlideItemsDefault_, templateLongQuoteSlideNumberDefault_, templateTitleSlideNumberDefault_ } from "./defaults";
+import { createLyricsSlidesDefaultInsertionSlideNumber_, createLyricsSlidesDefaultLongQuoteSlideItems_, createLyricsSlidesDefaultTemplateLongQuoteSlideNumber_, createLyricsSlidesDefaultTemplateTitleSlideNumber_ } from "./defaults";
 import { slideNumberToId_ } from "../../shared/slide-number/slide-number-to-id";
 import { SlideNumber } from "../../shared/slide-number/slide-number";
 import { SlideId } from "../../shared/slide-id/slide-id";
@@ -25,20 +25,20 @@ import { SlideId } from "../../shared/slide-id/slide-id";
  * @param {SlideNumber} parameters.insertionSlideNumber
  */
 export const createLongQuotesSlides = ({
-	longQuoteItems = longQuoteSlideItemsDefault_,
-	templateTitleSlideNumber = templateTitleSlideNumberDefault_,
-	templateContentSlideNumber = templateLongQuoteSlideNumberDefault_,
-	insertionSlideNumber = insertionSlideNumberDefault_,
+	longQuoteItems = createLyricsSlidesDefaultLongQuoteSlideItems_,
+	templateTitleSlideNumber = createLyricsSlidesDefaultTemplateTitleSlideNumber_,
+	templateContentSlideNumber = createLyricsSlidesDefaultTemplateLongQuoteSlideNumber_,
+	insertionSlideNumber = createLyricsSlidesDefaultInsertionSlideNumber_,
 }: {
 	longQuoteItems: LongQuoteItem[],
 	templateTitleSlideNumber: Nullable<SlideNumber>,
 	templateContentSlideNumber: Nullable<SlideNumber>,
 	insertionSlideNumber: SlideNumber,
 } = {
-	longQuoteItems: longQuoteSlideItemsDefault_,
-	templateTitleSlideNumber: templateTitleSlideNumberDefault_,
-	templateContentSlideNumber: templateLongQuoteSlideNumberDefault_,
-	insertionSlideNumber: insertionSlideNumberDefault_,	
+	longQuoteItems: createLyricsSlidesDefaultLongQuoteSlideItems_,
+	templateTitleSlideNumber: createLyricsSlidesDefaultTemplateTitleSlideNumber_,
+	templateContentSlideNumber: createLyricsSlidesDefaultTemplateLongQuoteSlideNumber_,
+	insertionSlideNumber: createLyricsSlidesDefaultInsertionSlideNumber_,	
 }): void => {
 	console.log(
 		generateDiscordPost_({longQuoteItems: longQuoteItems})

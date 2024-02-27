@@ -13,7 +13,7 @@ import { copySlide_ } from "../../shared/copy-slide";
 import { slideNumberToIndex_ } from "../../shared/slide-number/slide-number-to-index";
 import { createCopyItems_ } from "./create-copy-items";
 import { getNumberOfPages_ } from "./get-number-of-pages";
-import { defaultSlideNumber_ } from "./defaults";
+import { createHighlightVariationSlidesDefaultSlideNumber_ } from "./defaults";
 
 
 /**
@@ -22,11 +22,11 @@ import { defaultSlideNumber_ } from "./defaults";
  * @param {SlideNumber}	parameters.inputSlideNumber
  */
 export const createHighlightVariationSlides = ({
-	inputSlideNumber = defaultSlideNumber_,
+	inputSlideNumber = createHighlightVariationSlidesDefaultSlideNumber_,
 }: {
 	inputSlideNumber: SlideNumber,
 } = {
-	inputSlideNumber: defaultSlideNumber_,
+	inputSlideNumber: createHighlightVariationSlidesDefaultSlideNumber_,
 }): void => {
 	const presentation = SlidesApp.getActivePresentation();
 
