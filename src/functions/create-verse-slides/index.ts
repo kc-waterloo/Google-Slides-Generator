@@ -15,6 +15,7 @@ import { VerseItem } from "./verse-item";
 import { verseItemToShortQuoteItems_ } from "./verse-item-to-short-quote-items";
 import { verseItemToRequests_ } from "./verse-item-to-requests";
 import { insertionSlideNumberDefault_, templateSlideNumberDefault_, verseItemsDefault_ } from "./defaults";
+import { getVersesText_ } from "./get-verses-text";
 
 /**
  * 
@@ -46,6 +47,9 @@ export const createVerseSlides = ({
 			input: verseItemInput,
 			responses: UrlFetchApp.fetchAll(verseItemToRequests_(verseItemInput)).map(
 				(response) => {
+					const versesText: string = getVersesText_(verseItemInput);
+
+					console.log(`Parsing response for ${verseItemInput.book} ${verseItemInput.chapter}:${versesText}`);
 					return JSON.parse(response.getContentText()) as VerseApiResponse;
 				}
 			),
