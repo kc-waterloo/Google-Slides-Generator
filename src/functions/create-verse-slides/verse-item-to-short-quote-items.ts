@@ -8,10 +8,10 @@
 import { VerseApiResponse } from "./verse-api-response";
 import { ShortQuoteItem } from "../create-short-quotes-slides/short-quote-item";
 import { VerseItem } from "./verse-item";
+import { getVersesText_ } from "./get-verses-text";
 
 export const verseItemToShortQuoteItems_ = (verseItem: VerseItem): ShortQuoteItem[] => {
-	const versesText = verseItem.input.startingVerse < (verseItem.input.endingVerse ?? -Infinity) ?
-		`${verseItem.input.startingVerse}-${verseItem.input.endingVerse}` : verseItem.input.startingVerse.toString();
+	const versesText: string = getVersesText_(verseItem.input);
 
 	return verseItem.responses.map((response: VerseApiResponse) => {
 		return {
@@ -20,3 +20,5 @@ export const verseItemToShortQuoteItems_ = (verseItem: VerseItem): ShortQuoteIte
 		};
 	});
 };
+
+
