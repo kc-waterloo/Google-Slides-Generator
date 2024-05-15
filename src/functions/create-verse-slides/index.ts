@@ -16,6 +16,7 @@ import { verseItemToShortQuoteItems_ } from "./verse-item-to-short-quote-items";
 import { verseItemToRequests_ } from "./verse-item-to-requests";
 import { insertionSlideNumberDefault_, templateSlideNumberDefault_, verseItemsDefault_ } from "./defaults";
 import { getVersesText_ } from "./get-verses-text";
+import { parseStringToVerseItemInput } from "./parse-string-to-verse-item-input";
 
 /**
  * 
@@ -34,7 +35,7 @@ export const createVerseSlides = ({
 	templateSlideNumber = templateSlideNumberDefault_,
 	insertionSlideNumber = insertionSlideNumberDefault_,
 }: {
-	verseItemInputs: VerseItemInput[],
+	verseItemInputs: (VerseItemInput | string)[],
     templateSlideNumber: Nullable<SlideNumber>,
     insertionSlideNumber: SlideNumber,
 } = {
@@ -42,11 +43,13 @@ export const createVerseSlides = ({
 	templateSlideNumber: templateSlideNumberDefault_,
 	insertionSlideNumber: insertionSlideNumberDefault_,
 }): void => {
-	const verseItems = verseItemInputs.map((verseItemInput: VerseItemInput): VerseItem => {
+	const parsedVerseItemInputItems: VerseItemInput[] = verseItemInputs.map(parseStringToVerseItemInput);
+
+	const verseItems: VerseItem[] = parsedVerseItemInputItems.map((verseItemInput: VerseItemInput): VerseItem => {
 		return {
 			input: verseItemInput,
 			responses: UrlFetchApp.fetchAll(verseItemToRequests_(verseItemInput)).map(
-				(response) => {
+				(response): VerseApiResponse => {
 					const versesText: string = getVersesText_(verseItemInput);
 
 					console.log(`Parsing response for ${verseItemInput.book} ${verseItemInput.chapter}:${versesText}`);
