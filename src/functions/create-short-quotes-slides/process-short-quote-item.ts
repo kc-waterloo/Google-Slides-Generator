@@ -27,7 +27,7 @@ export const processShortQuoteItem_ = ({
 	shortQuoteSlideItem: ShortQuoteItem,
 	insertionIndex: SlideIndex,
 }): Nullable<SlideIndex> => {
-	const newSlide: GoogleAppsScript.Slides.Slide | undefined = copySlide_({
+	const newSlide: Nullable<GoogleAppsScript.Slides.Slide> = copySlide_({
 		presentation: presentation,
 		originalSlideId: templateContentSlideId,
 		newSlideIndex: insertionIndex,

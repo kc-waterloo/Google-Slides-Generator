@@ -14,6 +14,8 @@ import { slideNumberToIndex_ } from "../../shared/slide-number/slide-number-to-i
 import { createCopyItems_ } from "./create-copy-items";
 import { getNumberOfPages_ } from "./get-number-of-pages";
 import { createHighlightVariationSlidesDefaultSlideNumber_ } from "./defaults";
+import { Nullable } from "../../shared/nullable/nullable";
+import { CopyItem } from "../../shared/copy-item/copy-item";
 
 
 /**
@@ -30,32 +32,32 @@ export const createHighlightVariationSlides = ({
 }): void => {
 	const presentation = SlidesApp.getActivePresentation();
 
-	const inputSlideIndex = slideNumberToIndex_(inputSlideNumber);
-	const inputSlideId = assertNotNull_(
+	const inputSlideIndex: number = slideNumberToIndex_(inputSlideNumber);
+	const inputSlideId: string = assertNotNull_(
 		slideIndexToId_({
 			presentation: presentation,
 			slideIndex: inputSlideIndex,
 		})
 	);
-	const inputSlide = presentation.getSlideById(inputSlideId);
+	const inputSlide: GoogleAppsScript.Slides.Slide = presentation.getSlideById(inputSlideId);
 
-	const numberOfPages = getNumberOfPages_({inputSlide: inputSlide});
+	const numberOfPages: Nullable<number> = getNumberOfPages_({inputSlide: inputSlide});
 	if (numberOfPages === null) {
-		console.error("Number of pages not found");
+		console.error("CREATE_HIGHLIGHT_VARIATION_SLIDES: Number of pages not found");
 		return;
 	}
 
-	for (let i = 0; i < numberOfPages + 2; i++) {
-		const newSlide = copySlide_({
+	for (let i: number = 0; i < numberOfPages + 2; i++) {
+		const newSlide: Nullable<GoogleAppsScript.Slides.Slide> = copySlide_({
 			presentation: presentation,
 			originalSlideId: inputSlideId,
 			newSlideIndex: inputSlideIndex + i + 1,
 		});
-		if (newSlide === undefined) {
+		if (newSlide === null) {
 			continue;
 		}
 
-		const copyItems = createCopyItems_({
+		const copyItems: CopyItem[] = createCopyItems_({
 			currentPageIndex: i,
 			numberOfPages: numberOfPages,
 			isLastSlide: i === numberOfPages + 1,

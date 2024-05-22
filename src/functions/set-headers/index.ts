@@ -71,6 +71,7 @@ export const setHeaders = ({
 	setHeaderItems.forEach((
 		setHeaderItem: SetHeaderItem,
 	): void => {
+		console.log(`SET_HEADERS: Setting headers for ${setHeaderItem.sectionName ?? "No Section Selected"}.`);
 		const headerRelativeIndex: number = headerSectionsStringIndex - headerSectionsStringBaseIndex;
 
 		const baseCopyItems: CopyItem[] = [
@@ -94,14 +95,14 @@ export const setHeaders = ({
 		);
 
 		if (setHeaderItem.sectionName !== undefined) {
-			const boldedIndex = headerRelativeIndex + baseCopyItems.length;
+			const boldedIndex: number = headerRelativeIndex + baseCopyItems.length;
 
 			copyItems[boldedIndex].actions.bold = true;
 			copyItems[boldedIndex].actions.newColor = SlidesApp.ThemeColorType.DARK1;	
 		}
 
 		const slides: GoogleAppsScript.Slides.Slide[] = presentation.getSlides();
-		const templateSlide = presentation.getSlideById(templateSlideId);
+		const templateSlide: GoogleAppsScript.Slides.Slide = presentation.getSlideById(templateSlideId);
 
 		const sectionStartSlideIndex: SlideIndex = slideNumberToIndex_(setHeaderItem.sectionStartSlideNumber);
 		const sectionEndSlideIndex: SlideIndex = slideNumberToIndex_(setHeaderItem.sectionEndSlideNumber);

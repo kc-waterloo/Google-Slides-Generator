@@ -50,7 +50,7 @@ export const processLongQuoteSlideItem_ = ({
 	currentInsertionIndex++;
 
 	formattedStrings.forEach((formattedString: string): void => {
-		const newSlide: GoogleAppsScript.Slides.Slide | undefined = copySlide_({
+		const newSlide: Nullable<GoogleAppsScript.Slides.Slide> = copySlide_({
 			presentation: presentation,
 			originalSlideId: templateLongQuoteSlideId,
 			newSlideIndex: currentInsertionIndex,

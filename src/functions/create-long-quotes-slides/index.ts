@@ -84,6 +84,8 @@ const internalCreateLongQuoteSlides_ = ({
 	}
 
 	longQuoteItems.forEach((lyricsSlidesItem: LongQuoteItem): void => {
+		console.log(`CREATE_LONG_QUOTES_SLIDES: Generating ${lyricsSlidesItem.title}`);
+		
 		currentInsertionIndex = processLongQuoteSlideItem_({
 			presentation: presentation,
 			templateTitleSlideId: templateTitleSlideId,

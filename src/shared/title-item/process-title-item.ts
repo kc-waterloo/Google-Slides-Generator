@@ -1,3 +1,4 @@
+import { Nullable } from "./../nullable/nullable.d";
 /**
  * internal/process-title-items.ts
  * 
@@ -25,13 +26,13 @@ export const processTitleItem_ = ({
 	currentInsertionIndex: SlideIndex,
 	titleItem: TitleItem,
 }): boolean => {
-	const newTitleSlide: GoogleAppsScript.Slides.Slide | undefined = copySlide_({
+	const newTitleSlide: Nullable<GoogleAppsScript.Slides.Slide> = copySlide_({
 		presentation: presentation,
 		originalSlideId: templateTitleSlideId,
 		newSlideIndex: currentInsertionIndex,
 	});
 
-	if (newTitleSlide === undefined) {
+	if (newTitleSlide === null) {
 		return false;
 	}
 

@@ -34,7 +34,7 @@ export const createShortQuotesSlides = ({
 	shortQuoteItems: createShortQuotesSlidesDefaultShortQuoteItems_,
 	templateSlideNumber: createShortQuotesSlidesDefaultTemplateSlideNumber_,
 	insertionSlideNumber: createShortQuotesSlidesDefaultInsertionSlideNumber_,
-}) => {
+}): void => {
 	const presentation: GoogleAppsScript.Slides.Presentation = SlidesApp.getActivePresentation();
 
 	const templateSlideId: Nullable<SlideId> = slideNumberToId_({
@@ -46,11 +46,11 @@ export const createShortQuotesSlides = ({
 	let currentInsertionIndex: SlideNumber = slideNumberToIndex_(insertionSlideNumber);
 
 	if (templateSlideId === null) {
-		console.error("At least one of the original lyrics slides could not be found.");
+		console.error("CREATE_SHORT_QUOTES_SLIDES: At least one of the original lyrics slides could not be found.");
 		return;
 	}
 
-	shortQuoteItems.forEach((shortQuoteItem: ShortQuoteItem) => {
+	shortQuoteItems.forEach((shortQuoteItem: ShortQuoteItem): void => {
 		currentInsertionIndex = processShortQuoteItem_({
 			presentation: presentation,
 			templateContentSlideId: templateSlideId,

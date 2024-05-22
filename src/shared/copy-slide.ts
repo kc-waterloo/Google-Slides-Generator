@@ -1,3 +1,4 @@
+import { Nullable } from "./nullable/nullable.d";
 /**
  * internal/copy-slide.ts
  * 
@@ -16,11 +17,11 @@ export const copySlide_ = ({
 	presentation: GoogleAppsScript.Slides.Presentation,
 	originalSlideId: SlideId,
 	newSlideIndex: SlideIndex,
-}): GoogleAppsScript.Slides.Slide | undefined => {
+}): Nullable<GoogleAppsScript.Slides.Slide> => {
 	const originalSlide: GoogleAppsScript.Slides.Slide = presentation.getSlideById(originalSlideId);
 	if (!originalSlide) {
 		console.log("originalSlide was not defined");
-		return;
+		return null;
 	}
 
 	return presentation.insertSlide(newSlideIndex, originalSlide);
