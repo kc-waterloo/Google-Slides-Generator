@@ -72,7 +72,7 @@ export const parseDocumentItemsToLongQuoteItems_ = ({
 			paragraphHeadingToNumber_.get(currentParseDocumentItem.paragraphHeading)! <
 			paragraphHeadingToNumber_.get(DocumentApp.ParagraphHeading.HEADING1)!
 		) {
-			parseDocumentQueue.push(...currentParseDocumentItem.children);
+			parseDocumentQueue.push(...(Array.from(currentParseDocumentItem.children).reverse()));
 		}
 	}
 
