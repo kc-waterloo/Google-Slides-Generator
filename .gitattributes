@@ -1,0 +1,17 @@
+# Normalize line endings
+* text=auto eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.dmg binary
+*.app binary
+
+# Lockfiles
+package-lock.json -diff

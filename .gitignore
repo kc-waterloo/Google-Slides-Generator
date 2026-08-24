@@ -2,6 +2,7 @@
 node_modules
 dist
 build
+coverage
 
 .DS_Store
 .AppleDouble
@@ -19,3 +20,6 @@ build
 Network Trash Folder
 Temporary Items
 .apdisk
+*.tsbuildinfo
+apps/desktop/release/
+apps/desktop/dist-electron/

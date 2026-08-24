@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/",
+		"module": "esnext",
+		"target": "es2020",
+		"allowJs": true,
+		"moduleResolution": "bundler",
+		"strict": true,
+		"types": ["google-apps-script"],
+		"noImplicitReturns": true,
+		"noImplicitOverride": true,
+		"noUncheckedIndexedAccess": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true
+	},
+	"include": ["src/**/*.ts", "global.d.ts"],
+	"exclude": ["tests", "util", "coverage", "dist"],
+}

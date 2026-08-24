@@ -1,32 +1,66 @@
 {
   "name": "google-slides-generator",
   "version": "0.0.1",
+  "private": true,
   "description": "",
-  "main": "",
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "tsc -p ./util && node ./util/build/setup.js",
-    "build": "npm run lint && npm run setup && npm run build-no-lint",
-    "build-no-lint": "rollup -c",
-    "push-no-build": "clasp push",
-    "push": "npm run build && npm run push-no-build",
-    "lint": "eslint . --fix"
-  },
-  "author": "Min-Kyu Lee",
-  "dependencies": {
-    "@google/clasp": "^2.4.2",
-    "@types/google-apps-script": "^1.0.68"
+    "test": "concurrently -n gas,shared,web,desktop -c blue,green,yellow,magenta \"npm run test -w @gsg/gas\" \"npm run test -w @gsg/shared\" \"npm run test -w @gsg/web-ui\" \"npm run test -w @gsg/desktop\"",
+    "test:watch": "npm run test:watch -w @gsg/gas",
+    "test:coverage": "concurrently \"npm run test:coverage -w @gsg/gas\" \"npm run test:coverage -w @gsg/shared\"",
+    "dev": "npm run dev -w @gsg/web-ui",
+    "dev:desktop": "npm run build -w @gsg/web-ui && npm run dev -w @gsg/desktop",
+    "build:desktop": "npm run build -w @gsg/web-ui && npm run build -w @gsg/desktop",
+    "build:gas": "npm run build -w @gsg/gas",
+    "package:desktop": "npm run package -w @gsg/desktop",
+    "push": "npm run build:gas && npm run push:gas",
+    "push:gas": "npm run push-no-build -w @gsg/gas",
+    "lint": "eslint apps/",
+    "lint:fix": "eslint apps/ --fix",
+    "format": "prettier --write \"apps/**/*.{ts,tsx,js,json,css}\"",
+    "typecheck": "concurrently -n gas,shared,web,desktop -c blue,green,yellow,magenta \"npm run typecheck -w @gsg/gas\" \"npm run typecheck -w @gsg/shared\" \"npm run typecheck -w @gsg/web-ui\" \"npm run typecheck -w @gsg/desktop\"",
+    "check": "npm run lint && npm run typecheck && npm run test",
+    "release": "./release.sh",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
-    "@typescript-eslint/type-utils": "^6.17.0",
-    "@typescript-eslint/types": "^6.17.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-comment-header": "https://github.com/leeminkyu16/ESLint-Plugin-Comment-Header/releases/download/v0.0.1/eslint-plugin-comment-header-0.0.1.tgz",
-    "rollup": "^4.9.2",
-    "typescript": "^5.3.3"
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
+    "concurrently": "^10.0.3",
+    "prettier": "^3.8.3",
+    "typescript-eslint": "^8.60.1"
   },
-  "type": "module"
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "type": "module",
+  "lint-staged": {
+    "apps/gas/**/*.ts": [
+      "eslint --fix",
+      "npm run test -w @gsg/gas -- --findRelatedTests --passWithNoTests"
+    ],
+    "apps/shared/**/*.ts": [
+      "eslint --fix",
+      "npm run test -w @gsg/shared -- --findRelatedTests --passWithNoTests"
+    ],
+    "apps/web-ui/**/*.ts": [
+      "eslint --fix"
+    ],
+    "apps/web-ui/**/*.tsx": [
+      "eslint --fix"
+    ],
+    "apps/desktop/**/*.ts": [
+      "eslint --fix",
+      "npm run test -w @gsg/desktop -- --passWithNoTests"
+    ]
+  }
 }
