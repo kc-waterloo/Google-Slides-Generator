@@ -1,0 +1,23 @@
+{
+	"name": "@gsg/desktop",
+	"version": "0.0.1",
+	"description": "Google Slides Generator Desktop App",
+	"author": "Min-Kyu Lee",
+	"private": true,
+	"type": "module",
+	"main": "dist-electron/main/index.js",
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"build:web": "VITE_BASE=./ npm run build -w @gsg/web-ui",
+		"dev": "npm run build && concurrently --kill-others \"npm run dev -w @gsg/web-ui\" \"sleep 2 && electron .\"",
+		"package": "npm run build:web && npm run build && npx electron-builder --config electron-builder.yml",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"concurrently": "^10.0.3",
+		"electron": "^42.3.3",
+		"electron-builder": "^26.15.2",
+		"vitest": "^4.1.7"
+	}
+}

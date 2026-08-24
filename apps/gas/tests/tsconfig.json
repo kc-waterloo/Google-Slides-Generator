@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"outDir": "./build/",
+		"rootDir": "..",
+		"module": "commonjs",
+		"target": "es2020",
+		"types": ["jest", "node", "google-apps-script"],
+		"esModuleInterop": true,
+		"strict": true,
+		"noImplicitReturns": true,
+		"noImplicitOverride": true,
+		"noUncheckedIndexedAccess": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"moduleResolution": "bundler",
+	},
+	"include": [
+		"./**/*.ts",
+		"../src/**/*.ts",
+	],
+}

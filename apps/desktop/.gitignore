@@ -1,0 +1,8 @@
+dist-electron/
+out/
+release/
+node_modules/
+*.dmg
+*.exe
+*.AppImage
+*.deb
