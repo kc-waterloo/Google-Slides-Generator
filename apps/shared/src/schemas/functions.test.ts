@@ -11,7 +11,7 @@ import type { FunctionSchema, ParamSchema } from "./function-schema";
 const VALID_TYPES = new Set(["string", "number", "boolean", "string[]", "RegExp[]", "object[]"]);
 
 describe("functionSchemas", () => {
-	it("exports all 13 expected schemas", () => {
+	it("exports all 14 expected schemas", () => {
 		const names = Object.values(functionSchemas).map((s: FunctionSchema) => s.name).sort();
 		expect(names).toEqual([
 			"applyBackgroundColor",
@@ -23,6 +23,7 @@ describe("functionSchemas", () => {
 			"createLongQuotesSlidesFromDoc",
 			"createShortQuotesSlides",
 			"createSummarySlide",
+			"createVerseSlides",
 			"duplicateSlideRange",
 			"moveSlides",
 			"replaceAll",

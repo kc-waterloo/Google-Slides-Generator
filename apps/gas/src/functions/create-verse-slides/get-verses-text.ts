@@ -5,8 +5,7 @@
  * Copyright © 2024 Min-Kyu Lee. All rights reserved.
  */
 
-import { VerseItemInput } from "./verse-item-inputs";
-
+import type { VerseItemInput } from "@gsg/shared";
 
 export const getVersesText_ = (verseItemInput: VerseItemInput): string => {
 	return verseItemInput.startingVerse < (verseItemInput.endingVerse ?? -Infinity) ?

@@ -1291,6 +1291,34 @@ export const batchReplaceTextSchema: FunctionSchema = {
 	},
 };
 
+export const createVerseSlidesSchema: FunctionSchema = {
+	name: "createVerseSlides",
+	description: "Creates short quote slides from Bible verse references, fetched from jsonbible.com",
+	parameters: {
+		verseItemInputs: {
+			name: "verseItemInputs",
+			type: "string[]",
+			optional: false,
+			defaultValue: undefined,
+			description: "Verse references, e.g. \"Psalms 42:5 niv\" or a range \"Psalms 42:5-6 niv\"",
+		},
+		templateSlideNumber: {
+			name: "templateSlideNumber",
+			type: "number",
+			optional: true,
+			defaultValue: null,
+			description: "Slide number of the quote template (null for auto-detect)",
+		},
+		insertionSlideNumber: {
+			name: "insertionSlideNumber",
+			type: "number",
+			optional: false,
+			defaultValue: 9,
+			description: "Slide number to start inserting at",
+		},
+	},
+};
+
 export const functionSchemas: Record<string, FunctionSchema> = {
 	createLongQuotesSlides: createLongQuotesSlidesSchema,
 	createShortQuotesSlides: createShortQuotesSlidesSchema,
@@ -1305,6 +1333,7 @@ export const functionSchemas: Record<string, FunctionSchema> = {
 	moveSlides: moveSlidesSchema,
 	applyBackgroundColor: applyBackgroundColorSchema,
 	batchReplaceText: batchReplaceTextSchema,
+	createVerseSlides: createVerseSlidesSchema,
 };
 
 export const allFunctionNames: string[] = Object.keys(functionSchemas);

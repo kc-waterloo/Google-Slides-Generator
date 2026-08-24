@@ -5,8 +5,8 @@
  * Copyright © 2024 Min-Kyu Lee. All rights reserved.
  */
 
+import type { VerseItemInput } from "@gsg/shared";
 import { VerseApiResponse } from "./verse-api-response";
-import { VerseItemInput } from "./verse-item-inputs";
 
 export interface VerseItem {
 	input: VerseItemInput,

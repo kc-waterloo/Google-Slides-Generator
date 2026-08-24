@@ -6,17 +6,18 @@
  */
 
 
-import { Nullable } from "../../shared/nullable/nullable";
-import { SlideNumber } from "../../shared/slide-number/slide-number";
+import type { Nullable, SlideNumber, VerseItemInput } from "@gsg/shared";
 import { createShortQuotesSlides } from "../create-short-quotes-slides";
 import { VerseApiResponse } from "./verse-api-response";
-import { VerseItemInput } from "./verse-item-inputs";
 import { VerseItem } from "./verse-item";
 import { verseItemToShortQuoteItems_ } from "./verse-item-to-short-quote-items";
 import { verseItemToRequests_ } from "./verse-item-to-requests";
 import { insertionSlideNumberDefault_, templateSlideNumberDefault_, verseItemsDefault_ } from "./defaults";
 import { getVersesText_ } from "./get-verses-text";
 import { parseStringToVerseItemInput } from "./parse-string-to-verse-item-input";
+import { logInfo } from "../../shared/logger/logger";
+
+const MODULE = "createVerseSlides";
 
 /**
  * 
@@ -52,7 +53,7 @@ export const createVerseSlides = ({
 				(response): VerseApiResponse => {
 					const versesText: string = getVersesText_(verseItemInput);
 
-					console.log(`Parsing response for ${verseItemInput.book} ${verseItemInput.chapter}:${versesText}`);
+					logInfo(MODULE, `Parsing response for ${verseItemInput.book} ${verseItemInput.chapter}:${versesText}`);
 					return JSON.parse(response.getContentText()) as VerseApiResponse;
 				}
 			),

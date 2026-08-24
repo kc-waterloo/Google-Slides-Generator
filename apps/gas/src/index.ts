@@ -17,5 +17,6 @@ export { createLongQuotesSlides } from "./functions/create-long-quotes-slides";
 export { createLongQuotesSlidesFromDoc } from "./functions/create-long-quotes-slides-from-doc";
 export { createShortQuotesSlides } from "./functions/create-short-quotes-slides";
 export { createSummarySlide } from "./functions/create-summary-slide";
+export { createVerseSlides } from "./functions/create-verse-slides";
 export { replaceAll } from "./functions/replace-all";
 export { setHeaders } from "./functions/set-headers";

@@ -14,6 +14,7 @@ export { toRegExp, fromRegExp, testPattern } from "./types/regexp-pattern";
 
 export type { LongQuoteItem, LongQuoteSplitMode } from "./schemas/long-quote-item";
 export type { ShortQuoteItem } from "./schemas/short-quote-item";
+export type { VerseItemInput } from "./schemas/verse-item-input";
 export type { SetHeaderItem } from "./schemas/set-header-item";
 export type { ReplacePair } from "./schemas/replace-pair";
 export type { TextStyleOverride } from "./schemas/text-style-override";
@@ -34,6 +35,7 @@ export {
 	applyBackgroundColorSchema,
 	createSummarySlideSchema,
 	batchReplaceTextSchema,
+	createVerseSlidesSchema,
 	functionSchemas,
 	allFunctionNames,
 } from "./schemas/functions";

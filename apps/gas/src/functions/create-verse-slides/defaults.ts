@@ -5,9 +5,7 @@
  * Copyright © 2024 Min-Kyu Lee. All rights reserved.
  */
 
-import { Nullable } from "../../shared/nullable/nullable";
-import { SlideNumber } from "../../shared/slide-number/slide-number";
-import { VerseItemInput } from "./verse-item-inputs";
+import type { Nullable, SlideNumber, VerseItemInput } from "@gsg/shared";
 
 export const templateSlideNumberDefault_: Nullable<SlideNumber> = null;
 export const insertionSlideNumberDefault_: SlideNumber = 9;

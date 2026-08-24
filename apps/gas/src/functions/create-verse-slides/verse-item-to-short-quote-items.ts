@@ -6,7 +6,7 @@
  */
 
 import { VerseApiResponse } from "./verse-api-response";
-import { ShortQuoteItem } from "../create-short-quotes-slides/short-quote-item";
+import type { ShortQuoteItem } from "@gsg/shared";
 import { VerseItem } from "./verse-item";
 import { getVersesText_ } from "./get-verses-text";
 
@@ -15,7 +15,9 @@ export const verseItemToShortQuoteItems_ = (verseItem: VerseItem): ShortQuoteIte
 
 	return verseItem.responses.map((response: VerseApiResponse) => {
 		return {
-			quote: `(${response.verses}) ${response.text}` ?? "API ERROR: Not found",
+			quote: response.text !== undefined
+				? `(${response.verses}) ${response.text}`
+				: "API ERROR: Not found",
 			addendum: `${response.book} ${response.chapter}:${versesText} (${response.version})`
 		};
 	});
