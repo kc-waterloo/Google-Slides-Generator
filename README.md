@@ -135,6 +135,7 @@ All functions are exposed globally in the GAS runtime. Call them from your GAS `
 | `createBulletSlide` | Creates a single slide with title + bullet points | `bullet-title-text-box`, `bullet-point-N-text` |
 | `createSummarySlide` | Auto-generates a table-of-contents from section titles | Scans `section-title-text-box`; fills `summary-title-text`, `summary-item-N-text` |
 | `createHighlightVariationSlides` | Creates highlight variations from a multi-page input slide | `point-N-of-M-text-box`, `point-N-of-M-number-indicator-text-box` |
+| `createVerseSlides` | Turns Bible references into slides, then delegates to `createShortQuotesSlides` | `quote-text-box`, `addendum-text-box` |
 
 ### Slide Management
 
@@ -147,6 +148,42 @@ All functions are exposed globally in the GAS runtime. Call them from your GAS `
 | `batchReplaceText` | Performs multiple text replacement pairs across slides |
 | `batchSetTextStyle` | Applies font/color/style overrides to page elements matching keys |
 | `setHeaders` | Sets header bars with scrolling section labels across slide ranges |
+
+### Verse Sources
+
+`createVerseSlides` takes references as strings and fetches the text for you:
+
+```js
+createVerseSlides({
+  verseItemInputs: ["Psalms 42:5 niv", "창세기 1:1-3 개역개정", "고전13:4-7 개역개정"],
+  templateSlideNumber: null,
+  insertionSlideNumber: 9,
+  versionSources: [
+    {
+      version: "개역개정",
+      fileUrl: "https://drive.google.com/file/d/<file-id>/view"
+    }
+  ]
+})
+```
+
+A version listed in `versionSources` is read from a JSON file in Google Drive; every
+other version goes to the jsonbible.com API as before.
+
+The Drive file must be a flat object keyed `<book abbreviation><chapter>:<verse>`:
+
+```json
+{ "창1:1": "태초에 하나님이 천지를 창조하시니라", "창1:2": "..." }
+```
+
+Books may be written as the file's abbreviation (`창1:1`) or as the full Korean name
+(`창세기 1:1`) — all 66 books are mapped. Keys that cover a range (`겔24:4-5`) are
+expanded on load, so each verse in them is still reachable on its own. A verse the
+file lacks is logged and renders as `API ERROR: Not found` rather than failing the run.
+
+**These JSON files are never committed** — `.gitignore` blocks them. Upload the file to
+Drive and pass its URL. Reading it needs the Drive scope, so re-authorize the script the
+first time you use a version source.
 
 ### Template Requirements
 

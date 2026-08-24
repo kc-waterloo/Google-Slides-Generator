@@ -7,8 +7,13 @@
 
 import type { VerseItemInput } from "@gsg/shared";
 
-const RANGED_PATTERN = /(\w+ ?\w+) (\d+):(\d+)-(\d+) (\w+)/;
-const NON_RANGED_PATTERN = /(\w+ ?\w+) (\d+):(\d+) (\w+)/;
+/**
+ * Matches "Psalms 42:5 niv", "Psalms 42:5-6 niv", "창세기 1:1 개역개정" and the
+ * abbreviated form the Korean sources use, where no space separates the book
+ * from the chapter ("창1:1 개역개정", "고전13:4-7 개역개정"). The book is lazy so
+ * it gives back as few characters as possible before the chapter number.
+ */
+const REFERENCE_PATTERN = /^\s*(.+?) ?(\d+):(\d+)(?:-(\d+))? (\S+)\s*$/u;
 
 export const parseStringToVerseItemInput = (
 	verseItemInput: VerseItemInput | string,
@@ -17,29 +22,19 @@ export const parseStringToVerseItemInput = (
 		return verseItemInput;
 	}
 
-	const rangedMatch: RegExpMatchArray | null = verseItemInput.match(RANGED_PATTERN);
+	const match: RegExpMatchArray | null = verseItemInput.match(REFERENCE_PATTERN);
 
-	if (rangedMatch !== null) {
-		return {
-			book: rangedMatch[1]!,
-			chapter: parseInt(rangedMatch[2]!),
-			startingVerse: parseInt(rangedMatch[3]!),
-			endingVerse: parseInt(rangedMatch[4]!),
-			version: rangedMatch[5]!,
-		};
+	if (match === null) {
+		throw new Error(`PARSE_STRING_TO_VERSE_ITEM_INPUT: Could not parse ${verseItemInput}`);
 	}
 
-	const nonRangedMatch: RegExpMatchArray | null = verseItemInput.match(NON_RANGED_PATTERN);
+	const endingVerse: string | undefined = match[4];
 
-	if (nonRangedMatch !== null) {
-		return {
-			book: nonRangedMatch[1]!,
-			chapter: parseInt(nonRangedMatch[2]!),
-			startingVerse: parseInt(nonRangedMatch[3]!),
-			endingVerse: undefined,
-			version: nonRangedMatch[4]!,
-		};
-	}
-
-	throw new Error(`PARSE_STRING_TO_VERSE_ITEM_INPUT: Could not parse ${verseItemInput}`);
+	return {
+		book: match[1]!,
+		chapter: parseInt(match[2]!),
+		startingVerse: parseInt(match[3]!),
+		endingVerse: endingVerse === undefined ? undefined : parseInt(endingVerse),
+		version: match[5]!,
+	};
 };

@@ -1300,7 +1300,7 @@ export const createVerseSlidesSchema: FunctionSchema = {
 			type: "string[]",
 			optional: false,
 			defaultValue: undefined,
-			description: "Verse references, e.g. \"Psalms 42:5 niv\" or a range \"Psalms 42:5-6 niv\"",
+			description: "Verse references, e.g. \"Psalms 42:5 niv\", \"창1:1-3 개역개정\", or \"창세기 1:1 개역개정\"",
 		},
 		templateSlideNumber: {
 			name: "templateSlideNumber",
@@ -1315,6 +1315,27 @@ export const createVerseSlidesSchema: FunctionSchema = {
 			optional: false,
 			defaultValue: 9,
 			description: "Slide number to start inserting at",
+		},
+		versionSources: {
+			name: "versionSources",
+			type: "object[]",
+			optional: true,
+			defaultValue: undefined,
+			description: "Versions read from a Drive JSON file instead of the verse API, e.g. 개역개정",
+			arrayItemSchema: {
+				version: {
+					name: "version",
+					type: "string",
+					optional: false,
+					description: "Version token as written in the reference, e.g. 개역개정",
+				},
+				fileUrl: {
+					name: "fileUrl",
+					type: "string",
+					optional: false,
+					description: "Drive URL or file id of the JSON keyed like \"창1:1\"",
+				},
+			},
 		},
 	},
 };

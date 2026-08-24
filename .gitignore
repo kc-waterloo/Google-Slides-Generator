@@ -23,3 +23,7 @@ Temporary Items
 *.tsbuildinfo
 apps/desktop/release/
 apps/desktop/dist-electron/
+
+# Verse source data (bible JSON files are kept in Drive, never committed)
+*개역개정*.json
+apps/gas/data/
